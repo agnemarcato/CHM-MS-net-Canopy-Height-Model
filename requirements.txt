@@ -1,0 +1,13 @@
+numpy
+scipy
+pandas
+pillow
+matplotlib
+tqdm
+hdf5storage
+pytorch-lightning
+scikit-learn
+scikit-image
+tensorboard
+python-dotenv
+seaborn
