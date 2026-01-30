@@ -1,13 +1,13 @@
-# CHMer (Canopy Height Model-er)
+# SatCHM
 
 ## Motivation
 
 Canopy Height Models (CHMs) are useful tools for a wide variety of applications: 3D construction of wildland fuels, biomass estimates, land management, tracking deforestation, etc (Linn et al., 2020; Marcozzi et al., 2025). High-resolution CHMs are usually obtained from processing Digital Terrain Models (DTMs) from LiDAR data and subtracting those from Digital Elevation Models (DEMs) (Allred et al., 2025). However, LiDAR data is expensive and is collected less frequently compared to satellite imagery (Dassot et al., 2011). Therefore, this program leverages a system of convolutional neural networks (MS-net) to predict CHMs from satellite imagery.
 ## Description
 
-These are the required inputs to use CHMer, followed by the output:
+These are the required inputs to use SatCHM, followed by the output:
 
-![Alt text](pictures/inputs.png)
+![Alt text](figs/inputs.png)
 
 <br>
 <div style="text-align:center">
@@ -26,7 +26,7 @@ These are the required inputs to use CHMer, followed by the output:
       <td>Input DEMs of the target area should at least be 30 meters resolution</td>
 	  <tr>
       <td>Solar and Sensor Angles</td>
-      <td>Solar and sensor inputs are created with CHMer using the target azimuth, off-nadir angle, solar azimuth, and solar elevation metadata from the satellite imagery </td>
+      <td>Solar and sensor inputs are created with SatCHM using the target azimuth, off-nadir angle, solar azimuth, and solar elevation metadata from the satellite imagery </td>
     </tr>
 	<tr>
       <td>Lidar-produced CHMs </td>
@@ -37,108 +37,10 @@ These are the required inputs to use CHMer, followed by the output:
 
 </br>
 
-## Dependencies
+## How to run SatCHM
 
-### Python version
-This project is developed and tested with **Python 3.12**. It may work with other versions, but compatibility is not guaranteed.
+### Refer to [howToRunSatCHM.md](howToRunSatCHM.md)
 
-### Creating your environment
-```
-conda create -n chmerenv python=3.12 
-conda install gdal rasterio fiona geopandas shapely -c conda-forge
-
-conda activate chmerenv
-
-# Install others using the requirements.txt in your environment
-pip install -r requirements.txt
-```
-### Install Pytorch
-```
-pip install --force-reinstall torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-```
-This specifies CUDA 11.8 (as indicated by cu118). However, you must adjust this version based on:
-
-- The CUDA version installed on your system
-
-- You are using pip or conda
-
-- Your operating system and Python version
-
-To find the correct command for your setup:
-
-🔥 Visit [PyTorch Get Started Locally](https://pytorch.org/get-started/locally/)
-
-<br>
-
-**There, you can select your preferences (OS, package manager, Python version, and CUDA version), and it will generate the exact install command you need.**
-
-
-
-
-## Getting Started
-Create a .env file where the repo is located. Edit the file in a text editor.
-
-
-|      Rows     | Description |
-| ------------- | ------------- |
-| project_dir  | the project directory for the products of preprocessing, the neural network & post-processing  |
-| site  | the name of the site you are processing |
-| utm  | the Universal Transversal Mercator EPSG code (i.e. EPSG:32610)   |
-| dem_path | the path to the DEM GeoTIFF of the site  |
-| lidar_path | the path to the lidar-produced CHM GeoTIFF within the site  |
-| site_shapefile_dir | the path to the directory to the shapefile of the site   |
-| satellite_download_dir| the path to the directory that holds the satellite GeoTIFFs   |
-
-#### Throughout the documentation, we will be using the project 'caldor' as an example. Caldor references the Caldor Fire of 2021, south of Lake Tahoe, California. Here is the example:
-```
-UW PICO 5.09                                    File: .env                                       
-
-project_path=/Users/mia/Documents/Projects/caldor_run
-site=caldor
-utm=EPSG:32610
-dem_path=/Users/mia/Documents/caldor_dem.tif
-lidar_path=/Users/mia/Documents/caldor_lidar.tif
-site_shapefile_dir=/Users/mia/Downloads/wgs84_caldor
-satellite_download_dir=/Users/mia/Downloads/satellite_data
-```
-Document the appropriate paths and directories in the <strong><span style="color:#33484D">.env</span></strong> before running the program.
-
-If you are using Maxar's DigitalGlobe to accquire your satellite imagery, then WKT files are generated for you to use in their [online platform](https://evwhs.digitalglobe.com/myDigitalGlobe/login): follow [the documentation here](./docs/DIGITALGLOBE.md). If you are using your own imagery, [see additional details here](./docs/OWNIMAGERY.md) and place your imagery in the **satellite_download_dir** specified in your .env. 
-
-
-## Running Main
-
-After creating the .env, running the program:
-
-```
-CHMer... 🌳
-
-Project Directory: /Users/mia/Documents/Projects/caldor_run
-
-Confirming shapefile(.shp) is in provided directory...
-
-Using shapefile "caldor_wgs84.shp" in /Users/mia/Downloads/wgs84_caldor
-
-Processing the satellite imagery...
-
-Open this .CSV file for documenting angle metadata. Please keep this open as you proceed:
-
-         C:/Users/mia/Documents/caldor_run/metadata/angle-metadata.csv
-
-
-Are you using DigitalGlobe? (Y/N):
-
-
-```
-<br>
-
-If you are using DigitalGlobe, answer Y and follow the documentation [here](./docs/DIGITALGLOBE.md). If you are using your own imagery, answer N and follow the documentation [here](./docs/OWNIMAGERY.md)
-
----
-
-Afterwards, proceed [here](./docs/PROCESSING.md) to obtain detailed instruction about preprocessing, utilizing the neural network, and post processing steps.
-
-<br>
 
 ## Authors
 
@@ -148,9 +50,10 @@ Afterwards, proceed [here](./docs/PROCESSING.md) to obtain detailed instruction 
 - Adam Atchley **[aatchley@lanl.gov]**
 
 ## Version History
-0.0.0 (June 2025)
+1.0.0 (January 2026)
 
 ## License
+
 O#: O5010
 
 This program is Open-Source under the BSD-3 License.
@@ -158,12 +61,11 @@ This program is Open-Source under the BSD-3 License.
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
 Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-
+ 
 Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-
+ 
 Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
 
 ## Sources
 Allred, B. W., McCord, S. E., & 	Morford, S. L. (2025). Canopy height model and NAIP imagery pairs across CONUS. Scientific Data, 12(1), 322. https://doi.org/10.1038/s41597-025-04655-z
@@ -175,4 +77,4 @@ Linn, R. R., Goodrick, S. L., Brambilla, S., Brown, M. J., Middleton, R. S., O'B
 Marcozzi, A., Wells, L., Parsons, R., Mueller, E., Linn, R., & Hiers, J. K. (2025). FastFuels: Advancing wildland fire modeling with high-resolution 3D fuel data and data assimilation. Environmental Modelling & Software, 183, 106214. https://doi.org/10.1016/j.envsoft.2024.106214
 
 ## Acknowledgments
-This research was funded and supported by the Laboratory Directed Research and Development under 'Experiemental Research' at Los Alamos National Laboratory. Thank you to the entire FIRE team and others in the Earth and Environmental Sciences division, including but not limited to Agnese Marcato, Julia Oliveto, and Javier Santos. 
+This research was funded and supported by the Laboratory Directed Research and Development under 'Experiemental Research' at Los Alamos National Laboratory. Thank you to the entire FIRE team and others in the Earth and Environmental Sciences division, including but not limited to Agnese Marcato, Julia Oliveto, Javier Santos, and Rod Linn. 

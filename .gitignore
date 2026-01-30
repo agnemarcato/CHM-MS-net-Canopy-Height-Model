@@ -1,6 +1,7 @@
-.DS_Store
+.env
+*.zip
+*.ckpt
+*.tif
+*.csv
 *.pyc
-__pycache__/
-.env*
-lightning_logs/
-
+\downloads
