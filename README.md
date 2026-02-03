@@ -69,7 +69,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 ## Citation
 
-Please use the following citation if using our work:
+Please use the following citations if using our work:
 
 ```
 @article{abolt2025deep,
@@ -81,6 +81,14 @@ Please use the following citation if using our work:
   number       = {015013},
   doi          = {10.1088/2632-2153/ada47e},
   url          = {https://www.fs.usda.gov/rm/pubs_journals/2025/rmrs_2025_abolt_c001.pdf}
+}
+
+@software{CHM-MS-net-Canopy-Height-Model2026,
+  title        = {{CHM-MS-net Canopy Height Model} (v1.0.0)},
+  author       = {Mitchell, Mia and Abolt, Charles and Crennen, Zachary and Atchley, Adam},
+  year         = {2026},
+  url          = {https://github.com/lanl/CHM-MS-net-Canopy-Height-Model/tree/v1.0.0},
+  note         = {Computer software, version 1.0.0},
 }
 ```
 
