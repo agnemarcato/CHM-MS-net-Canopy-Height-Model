@@ -66,8 +66,8 @@ openTopoAPIkey="abcdefg12345"
 inferenceShpPath="/mnt/c/Users/zach/Desktop/canopy/SatCHM/downloads/${site}/infShp/caldor_infShp.geojson"
 
 # OPTIONAL ARGS
-# customTrainShpPath="/mnt/c/Users/zach/Desktop/canopy/SatCHM/downloads/${site}/trainShp/harv_trainShp.geojson"
-# customLidarTifPath="/mnt/c/Users/zach/Desktop/canopy/SatCHM/downloads/${site}/laz/harvard_laz/NEON_lidar-point-cloud-line/NEON/merged_CHM.tif"
+# customTrainShpPath="/mnt/c/Users/zach/Desktop/canopy/SatCHM/downloads/${site}/trainShp/caldor_trainShp.geojson"
+# customLidarTifPath="/mnt/c/Users/zach/Desktop/canopy/SatCHM/downloads/${site}/laz/caldor_laz/NEON_lidar-point-cloud-line/NEON/merged_CHM.tif"
 ```
 
 ---
@@ -82,7 +82,7 @@ Create or use an existing **shapefile or GeoJSON** defining the inference area.
 
 ## 5. Prepare Training Inputs
 
-### Build and Activate the Conda Environment
+### 5.1 Build and Activate the Conda Environment
 
 Navigate to:
 
@@ -97,9 +97,14 @@ conda env create -f SatCHMenv.yml
 conda activate SatCHMenv
 ```
 
+NOTE: Using this environment alone, you will only be able to acquire a CHM raster as your final desired output. If you would like the raster to be segmented into a treelist, with individual tree locations, heights, and crown radii, follow the additional below installation instructions
+
+OPTIONAL: Tree crown segmentation can be achieved with [cloud2trees](https://github.com/georgewoolsey/cloud2trees). The cloud2trees functionality is built into the inference code already, however, requires a few manual installations. After activating your conda environment, enter an R session by typing and entering "R" into the terminal. Then, follow these instructions in the "Package Installation" section in the [cloud2trees installation docs](https://georgewoolsey.github.io/cloud2trees/articles/cloud2trees-setup.html). These installations may take a while. Assuming that the 4 installation checks (cloud2trees, ggplot2, magrittr, terra) succeeded, your code should be set up to produce a final output of a treelist.
+
+
 ---
 
-### Run `main1.py`
+### 5.2 Run `main1.py`
 
 From the `prepTrainInputs` directory:
 
@@ -118,7 +123,7 @@ project_path/{site}_data/
 
 ---
 
-### Download Satellite Imagery from Vantor
+### 5.3 Download Satellite Imagery from Vantor
 
 You must download **cloud-free, snow-free Vantor imagery** with:
 
@@ -159,7 +164,7 @@ downloads/wvimgInf
 
 ---
 
-### Run `main2.py`
+### 5.4 Run `main2.py`
 
 From `prepTrainInputs`:
 
@@ -228,3 +233,5 @@ The merged predicted CHM raster is:
 `
 INF_chm_pred_merged
 `
+
+If you only followed the conda environment build and activation in Step 5.1 without the optional cloud2trees installation, your code will fail on the treelist generation step. This is OK, and you may use INF_chm_pred_merged as your final output. If cloud2trees was installed, the CHM raster will be segmented (may take a while), and your final output will appear at `{site}_INF_data/{site}_treelist.csv`.
