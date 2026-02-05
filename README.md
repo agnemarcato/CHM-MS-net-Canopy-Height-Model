@@ -101,5 +101,7 @@ Linn, R. R., Goodrick, S. L., Brambilla, S., Brown, M. J., Middleton, R. S., O'B
 
 Marcozzi, A., Wells, L., Parsons, R., Mueller, E., Linn, R., & Hiers, J. K. (2025). FastFuels: Advancing wildland fire modeling with high-resolution 3D fuel data and data assimilation. Environmental Modelling & Software, 183, 106214. https://doi.org/10.1016/j.envsoft.2024.106214
 
+Woolsey G (2025). cloud2trees: Aerial point cloud data to forest inventory tree lists. R package version 0.7.7, https://georgewoolsey.github.io/cloud2trees/.
+
 ## Acknowledgments
 This research was funded and supported by the Laboratory Directed Research and Development under 'Experiemental Research' at Los Alamos National Laboratory. Thank you to the entire FIRE team and others in the Earth and Environmental Sciences division, including but not limited to Agnese Marcato, Julia Oliveto, Javier Santos, and Rod Linn. 
