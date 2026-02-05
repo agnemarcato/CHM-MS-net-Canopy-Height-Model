@@ -92,7 +92,7 @@ os.makedirs(prewvimgPath, exist_ok=True)
 
 # Create points to center tiles along (anchors)
 print('Creating set of tile anchors')
-tileAnchors = utils.genTileAnchors(shp_path=inf_shp_output_path, out_path=infAnchorsPath)
+tileAnchors = utils.genTileAnchors(shp_path=inf_shp_output_path, out_path=infAnchorsPath, buffer = 32)
 print(f'Saved tile anchors to {infAnchorsPath}')
 
 # ################## PROCESS DEM DATA ###########################
@@ -177,6 +177,8 @@ print('Merging chm tiles')
 utils.merge_chm_tiles(
     input_folder=os.path.join(inf_data_path, 'chm_preds'),
     output_tif=outputRasterPath,
+    b=40.0,
+    c=8.0
 )
 print(f'Merged chm tiles, saved merged raster to {outputRasterPath}')
 
