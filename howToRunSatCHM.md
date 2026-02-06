@@ -137,6 +137,8 @@ For now, contact **zcrennen@lanl.gov** for assistance.
 - Training imagery → year reported by `main1.py`
 - Inference imagery → year of interest
 
+The year reported by the end of the output of `main1.py` is the mean of the years of collection of 3DEP lidar scans that covered your area.
+
 #### Order Parameters
 
 ```
