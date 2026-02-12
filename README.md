@@ -3,6 +3,7 @@
 ## Motivation
 
 Canopy Height Models (CHMs) are useful tools for a wide variety of applications: 3D construction of wildland fuels, biomass estimates, land management, tracking deforestation, etc (Linn et al., 2020; Marcozzi et al., 2025). High-resolution CHMs are usually obtained from processing Digital Terrain Models (DTMs) from LiDAR data and subtracting those from Digital Elevation Models (DEMs) (Allred et al., 2025). However, LiDAR data is expensive and is collected less frequently compared to satellite imagery (Dassot et al., 2011). Therefore, this program leverages a system of convolutional neural networks (MS-net) to predict CHMs from satellite imagery.
+
 ## Description
 
 These are the required inputs to use SatCHM, followed by the output:
@@ -30,7 +31,7 @@ These are the required inputs to use SatCHM, followed by the output:
     </tr>
 	<tr>
       <td>Lidar-produced CHMs </td>
-      <td> Input lidar-produced CHMs should be at 0.5 - 0.6 meters or finer resolutions </td>
+      <td> Input lidar-produced CHMs should be at 0.5 - 0.6 meters or finer resolutions. Note that Lidar is required for training, but not inference. </td>
     </tr>
   </table>
 </div>
@@ -41,6 +42,19 @@ These are the required inputs to use SatCHM, followed by the output:
 
 ### Refer to [howToRunSatCHM.md](howToRunSatCHM.md)
 
+## Changelog from v0.0.0 -> v1.0.0
+
+- Overall software streamlining and reduction of manual script executions
+- Removed most required variables from .env file 
+- Created conda env file with all necessary python packages and removed need for manual installations
+- Added default option to use USGS 3DEP Lidar (original custom lidar still supported)
+- Added automatic train shape generation with support for custom train shape
+- Switched DEM to download and tile automatically
+- Removed manual wvimg metadata annotation and automated metadata extraction
+- Added edge feathering in inference with tunable parameters
+- Reduced tiling operations and implemented anchor-based tiling logic (helps with edge feathering)
+- Added cloud2trees CHM segmentation to generate treelist (x,y,height,crown_area,height_at_max_diameter) from CHM raster
+- Added [run instruction documentation](howToRunSatCHM.md)
 
 ## Authors
 
@@ -50,7 +64,7 @@ These are the required inputs to use SatCHM, followed by the output:
 - Adam Atchley **[aatchley@lanl.gov]**
 
 ## Version History
-1.0.0 (January 2026)
+1.0.0 (February 2026)
 
 ## License
 
