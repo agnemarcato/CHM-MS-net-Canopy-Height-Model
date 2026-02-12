@@ -52,8 +52,8 @@ These are the required inputs to use SatCHM, followed by the output:
 - Switched DEM to download and tile automatically
 - Removed manual wvimg metadata annotation and automated metadata extraction
 - Added edge feathering in inference with tunable parameters
-- Reduced tiling operations and implemented anchor-based tiling logic (helps with edge feathering)
-- Added cloud2trees CHM segmentation to generate treelist (x,y,height,crown_area,height_at_max_diameter) from CHM raster
+- Reduced tiling operations and implemented anchor-based tiling logic
+- Added [cloud2trees](https://github.com/georgewoolsey/cloud2trees?tab=readme-ov-file) CHM segmentation to generate treelist (x,y,height,crown_area,height_at_max_diameter) from CHM raster
 - Added [run instruction documentation](howToRunSatCHM.md)
 
 ## Authors
