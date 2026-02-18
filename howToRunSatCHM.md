@@ -142,6 +142,8 @@ The year reported by the end of the output of `main1.py` is the mean of the year
 #### Order Parameters
 
 ```
+Delivery = Orders Manager
+Additional Direct Delivery = No Additional Delivery
 Production Parameters = ORTHO-READY (STANDARD) OR2A
 Output Bands = Pan
 Output File Format = GeoTIFF
