@@ -298,7 +298,7 @@ def snap(x, res):
 def build_train_square_near_inference(
     inference_geojson_path,
     output_geojson_path,
-    num_tiles=1000,
+    num_tiles=1024,
     halo_m=16,
     res=0.5,
     epsg=None
