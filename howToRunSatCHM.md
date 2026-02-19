@@ -78,6 +78,23 @@ Create or use an existing **shapefile or GeoJSON** defining the inference area.
 
 - Save the file path to `inferenceShpPath` in your `.env` file
 
+### Notes on Inference and Train Shape
+
+You will receive an inference shape and train shape throughout this code. Below is an explanation of what these represent
+
+#### Inference Shape
+
+The inference shape represents the area for which you want to run SatCHM at. Although you provide your own inference shape (shown in red), a new one is generated (shown in green) that is reprojected to the correct CRS and includes a 512m buffer on all sides. Temporally align your imagery to the year you want to run inference, which in most cases is the latest available imagery.
+
+![Inference Shape](figs/inferenceShape.png)
+
+#### Train Shape
+
+Train Shape:
+By default, a square that contains 1024 tiles (shown in green) will be created around the center of your original inference area (shown in red). This represents the area for which you should collect data to train your model. Although this works for many cases, this may not be ideal in edge cases such as being near a shoreline, open prairie/desert, or disturbance affected area. In this case, you can provide a custom area for which you want to train at. If using a custom area (shown in blue), the code will reproject your area and automatically fit a rectangle within your training area that contains 1024 tiles. This new train area is the area for which you should try to download imagery for training aligned to the year specified at the end of main1. The original custom training area (shown in blue) can be very approximate and does not need to be precise.
+
+![Train Shape](figs/trainShape.png)
+
 ---
 
 ## 5. Prepare Training Inputs
