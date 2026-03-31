@@ -112,13 +112,10 @@ Then run:
 ```
 conda env create -f SatCHMenv.yml
 conda activate SatCHMenv
+Rscript post_install.R
 ```
 
-NOTE: Using this environment alone, you will only be able to acquire a CHM raster as your final desired output. If you would like the raster to be segmented into a treelist, with individual tree locations, heights, and crown radii, follow the additional below installation instructions
-
-OPTIONAL: Tree crown segmentation can be achieved with [cloud2trees](https://github.com/georgewoolsey/cloud2trees). The cloud2trees functionality is built into the inference code already, however, requires a few manual installations. After activating your conda environment, enter an R session by typing and entering "R" into the terminal. Then, follow these instructions in the "Package Installation" section in the [cloud2trees installation docs](https://georgewoolsey.github.io/cloud2trees/articles/cloud2trees-setup.html). These installations may take a while. Assuming that the 4 installation checks (cloud2trees, ggplot2, magrittr, terra) succeeded, your code should be set up to produce a final output of a treelist.
-
-
+Anecdotally, env creation takes ~10-15 min and post_install.R takes ~30 min - 1 hr to run. Fortunately this step only needs to be done once, and not every time for every run of SatCHM
 ---
 
 ### 5.2 Run `main1.py`
