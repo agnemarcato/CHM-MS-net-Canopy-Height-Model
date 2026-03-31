@@ -1,0 +1,42 @@
+name: SatCHMenvV3
+channels:
+  - conda-forge
+channel_priority: strict
+
+dependencies:
+  - python=3.12
+  - pip
+
+  - numpy
+  - scipy
+  - pandas
+  - scikit-learn
+
+  - gdal
+  - rasterio
+  - geopandas
+  - shapely
+  - pyproj
+  - pdal
+
+  - xarray
+  - dask
+
+  - hvplot
+  - holoviews
+  - panel
+
+  - r-base
+  - r-pkgbuild
+  - r-remotes
+  - r-tidyverse
+  - r-sf
+  - r-terra
+  - r-bh
+  - r-jsonlite
+  - r-stringr
+  - r-lidr
+  - r-docopt
+
+  - pip:
+      - python-dotenv
