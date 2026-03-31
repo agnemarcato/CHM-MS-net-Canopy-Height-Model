@@ -1,4 +1,4 @@
-name: SatCHMenvV5
+name: SatCHMenv
 channels:
   - conda-forge
 
