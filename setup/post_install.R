@@ -6,7 +6,7 @@ if (!requireNamespace("remotes", quietly = TRUE)) {
   install.packages("remotes")
 }
 
-install_github_checked <- function(repo, pkg = sub(".*/", "", repo), dependencies = FALSE) {
+install_github_checked <- function(repo, pkg = sub(".*/", "", repo), dependencies = TRUE) {
   message(sprintf("=== Installing %s from %s ===", pkg, repo))
 
   ok <- tryCatch({
@@ -39,21 +39,21 @@ if (!requireNamespace("lutz", quietly = TRUE)) {
 }
 message(sprintf("lutz installed: %s", requireNamespace("lutz", quietly = TRUE)))
 
-message("=== GitHub installs ===")
 install_github_checked("tiagodc/TreeLS", "TreeLS")
 install_github_checked("DRAAlmeida/leafR", "leafR")
 install_github_checked("olgaviedma/LadderFuelsR", "LadderFuelsR")
 
+message("=== Installing cloud2trees prerequisites ===")
+if (!requireNamespace("imager", quietly = TRUE)) {
+  install.packages("imager")
+}
+if (!requireNamespace("ForestTools", quietly = TRUE)) {
+  install.packages("ForestTools")
+}
 
-# As of 3/31/26, the below installation is faling
-message("=== cloud2trees ===")
-install_github_checked(
-  "georgewoolsey/cloud2trees",
-  "cloud2trees",
-  dependencies = TRUE
-)
+install_github_checked("georgewoolsey/cloud2trees", "cloud2trees")
 
 message("=== Final status ===")
-pkgs <- c("lutz", "lasR", "TreeLS", "leafR", "LadderFuelsR", "cloud2trees")
+pkgs <- c("lutz", "lasR", "TreeLS", "leafR", "LadderFuelsR", "imager", "ForestTools", "cloud2trees")
 status <- sapply(pkgs, requireNamespace, quietly = TRUE)
 print(status)

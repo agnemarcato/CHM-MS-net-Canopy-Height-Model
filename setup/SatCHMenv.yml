@@ -1,0 +1,71 @@
+name: SatCHMenvV8
+
+channels:
+  - conda-forge
+
+dependencies:
+  # --- Core Python ---
+  - python=3.12
+  - pip
+  - numpy
+  - scipy
+  - pandas
+  - scikit-learn
+  - python-dotenv
+
+  # --- Geospatial / LiDAR ---
+  - gdal
+  - rasterio
+  - geopandas
+  - shapely
+  - pyproj
+  - pdal
+
+  # --- Data / parallel ---
+  - xarray
+  - dask
+
+  # --- Visualization ---
+  - hvplot
+  - holoviews
+  - panel
+
+  # --- R base + core ---
+  - r-base=4.5
+  - r-pkgbuild
+  - r-remotes
+
+  # --- R ecosystem ---
+  - r-tidyverse
+  - r-sf
+  - r-terra
+  - r-lidR
+  - r-lasr
+  - r-rgl
+
+  # --- R dependencies (compiled backends) ---
+  - r-rcpp
+  - r-rcppeigen
+  - r-rcpparmadillo
+  - r-bh
+  - r-jsonlite
+  - r-stringr
+  - r-docopt
+
+  # --- Build tools ---
+  - compilers
+  - make
+  - pkg-config
+
+  # --- X11 + graphics stack ---
+  - xorg-libx11
+  - xorg-libxext
+  - xorg-libxt
+  - xorg-xorgproto
+
+  # --- Image / math libs ---
+  - libpng
+  - libtiff
+  - fftw
+  - freetype
+  - fontconfig

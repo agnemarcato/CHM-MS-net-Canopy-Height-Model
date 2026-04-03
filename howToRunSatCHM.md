@@ -104,7 +104,7 @@ By default, a square that contains 1024 tiles (shown in green) will be created a
 Navigate to:
 
 `
-project_path/SatCHM
+project_path/SatCHM/setup
 `
 
 Then run:
@@ -112,10 +112,11 @@ Then run:
 ```
 conda env create -f SatCHMenv.yml
 conda activate SatCHMenv
-Rscript post_install.R
+chmod 700 post_install.sh
+./post_install.sh
 ```
 
-Anecdotally, env creation takes ~10-15 min and post_install.R takes ~30 min - 1 hr to run. Fortunately this step only needs to be done once, and not every time for every run of SatCHM
+This environment is primarily configured to run on linux. Anecdotally, env creation takes ~10-15 min and post_install.R takes ~30 min - 1 hr to run. Fortunately this step only needs to be done once, and not every time for every run of SatCHM
 
 ---
 
