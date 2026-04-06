@@ -176,12 +176,12 @@ Move imagery to:
 
 - Training imagery:
 `
-downloads/wvimgTrain
+project_path/downloads/wvimgTrain
 `
 
 - Inference imagery:
 `
-downloads/wvimgInf
+project_path/downloads/wvimgInf
 `
 
 ---
