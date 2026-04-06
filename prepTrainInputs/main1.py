@@ -37,8 +37,10 @@ def main():
 
     # Folder creations
     os.makedirs(site_data_path, exist_ok=True)
-    os.makedirs(os.path.join('..', '..', 'downloads', site, 'wvimgTrain'), exist_ok=True)
-    os.makedirs(os.path.join('..', '..', 'downloads', site, 'wvimgInf'), exist_ok=True)
+    print(f'CREATING FOLDER: {os.path.join(project_path, 'downloads', site, 'wvimgTrain')}')
+    print(f'CREATING FOLDER: {os.path.join(project_path, 'downloads', site, 'wvimgInf')}')
+    os.makedirs(os.path.join(project_path, 'downloads', site, 'wvimgTrain'), exist_ok=True)
+    os.makedirs(os.path.join(project_path, 'downloads', site, 'wvimgInf'), exist_ok=True)
 
     ############ PREPARE SHAPES AND ANCHORS #############
 
