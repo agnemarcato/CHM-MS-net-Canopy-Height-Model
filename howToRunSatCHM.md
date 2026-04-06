@@ -137,6 +137,8 @@ Notes:
 project_path/{site}_data/
 `
 
+Note the difference between `project_path/{site}_data/` and `project_path/downloads/`. `project_path/{site}_data/` is meant to store the cleaned data after processing, ready to be fed into the neural network, while `project_path/downloads/` is meant to be a temporary storage location for raw data before processing. As the CHM data is processed while it is downloaded, it is saved directly to `project_path/{site}_data/` and does not pass through the downloads folder. Do not delete `project_path/downloads/` until the very end after Step 7, as it is needed for inference at the end of the workflow. 
+
 ---
 
 ### 5.3 Download Satellite Imagery from Vantor
