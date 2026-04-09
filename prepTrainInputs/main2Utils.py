@@ -616,7 +616,7 @@ def resolveOverlaps(wvimgInfPath, metadataPath):
 
 def renameTiles(ms_data_path):
     wvimg_path = os.path.join(ms_data_path, "wvimg")
-    dem_path = os.path.join(ms_data_path, "DEM")
+    dem_path = os.path.join(ms_data_path, "dem")
     lidar_path = os.path.join(ms_data_path, "chm")
 
     # Helper to rename or symlink tiles in target_dir based on wvimg
@@ -628,7 +628,7 @@ def renameTiles(ms_data_path):
 
             tile_id, rest = wvimg_file.split('_', 1)
             reference_name = f"{tile_id}_{rest}"
-            # Find matching tiles in DEM or lidar that include the tile_id
+            # Find matching tiles in dem or lidar that include the tile_id
             matches = [f for f in os.listdir(target_dir) if rest in f]
 
             for match in matches:
@@ -655,11 +655,11 @@ def renameTiles(ms_data_path):
                         link_target = os.path.relpath(existing_file, os.path.dirname(symlink_name))
                         os.symlink(link_target, symlink_name)
 
-    # Process DEM and lidar using wvimg as reference
+    # Process dem and lidar using wvimg as reference
     process_against_wvimg(dem_path)
     process_against_wvimg(lidar_path)
 
-    # # Clean up any files in DEM and lidar that don't have exactly 2 underscores
+    # # Clean up any files in dem and lidar that don't have exactly 2 underscores
     # for cleanup_dir in [dem_path, lidar_path]:
     #     for fname in os.listdir(cleanup_dir):
     #         full_path = os.path.join(cleanup_dir, fname)
@@ -668,8 +668,8 @@ def renameTiles(ms_data_path):
 
 def makeLists(base_dir: str, site):
     # Define the subdirectories
-    # subdirs = ['DEM', 'wvimg', 'lidar']
-    subdirs = ['DEM', 'chm', 'wvimg']
+    # subdirs = ['dem', 'wvimg', 'lidar']
+    subdirs = ['dem', 'chm', 'wvimg']
     
     # Get the set of files for each subdirectory
     file_sets = []
@@ -763,7 +763,7 @@ def normalize_and_save_tile(src_path, dst_path, global_max_range):
         return local_range, os.path.basename(dst_path)
     
 
-def normDEMs(src_path, dst_path):
+def normdems(src_path, dst_path):
     global_max_range, max_range_file = get_max_difference_in_dir(src_path)
 
     for filename in os.listdir(src_path):
