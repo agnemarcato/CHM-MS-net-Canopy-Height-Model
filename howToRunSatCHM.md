@@ -172,7 +172,10 @@ Projection = UTM
 Kernel = MTF
 ```
 
-Move imagery to:
+Leave the imagery as zip files, do not need to unzip them. The full zips are required for metadata processing, so manually extracting the tifs and providing them will not work.
+
+
+Move imagery zips to:
 
 - Training imagery:
 `
