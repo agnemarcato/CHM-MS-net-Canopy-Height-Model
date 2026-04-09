@@ -203,6 +203,8 @@ Outputs will be available at:
 project_path/{site}_data/
 `
 
+Note that you may see messages warning you that wvimg has no data tiles. This is ok and expected, as some tiles may generate near the edges of your satellite capture, and pixels outside of the edge will be nodata. These tiles are simply discarded. By default 1000 tiles are attempted to be collected, as 1000 is a genereous buffer for the amount of data required. The exact quantity of data required is not hard set, but if it is a few hundred below 1000, it is OK. Ensure that the value printed after "size of set intersection:" in the terminal is greater than 0, and hopefully at least above 500.
+
 ---
 
 ## 6. Train the Model
