@@ -44,10 +44,10 @@ root, _ = os.path.splitext(inferenceShpPath) # Find inf shape as defined during 
 inf_shp_output_path = root + "_utm.geojson"
 infAnchorsPath = os.path.join(project_path, 'downloads', site, 'infShape', f'{site}_infAnchors.csv')
 lidarTilesPath = os.path.join(inf_data_path, 'chm')
-DEM_download_path = os.path.join(project_path, 'downloads', site, 'dem', f'{site}_dem_INF_download.tif')
+dem_download_path = os.path.join(project_path, 'downloads', site, 'dem', f'{site}_dem_INF_download.tif')
 dem_UTM_path = os.path.join(project_path, 'downloads', site, 'dem', f'{site}_dem_INF_UTM.tif')
-DEM_prenorm_tiles_path = os.path.join(inf_data_path, 'dem_prenorm')
-DEM_tiles_path = os.path.join(inf_data_path, 'DEM')
+dem_prenorm_tiles_path = os.path.join(inf_data_path, 'dem_prenorm')
+dem_tiles_path = os.path.join(inf_data_path, 'dem')
 pathToWvimg = os.path.join(project_path, 'downloads', site, 'wvimgInf')
 prewvimgPath = os.path.join(inf_data_path, 'prewvimg')
 metadataPath = os.path.join(project_path, 'downloads', site, 'metadata', 'DGTilesMetadata.json')
@@ -84,8 +84,8 @@ rdsPath = None
 
 # folder creations
 os.makedirs(inf_data_path, exist_ok=True)
-os.makedirs(DEM_tiles_path, exist_ok=True)
-os.makedirs(DEM_prenorm_tiles_path, exist_ok=True)
+os.makedirs(dem_tiles_path, exist_ok=True)
+os.makedirs(dem_prenorm_tiles_path, exist_ok=True)
 os.makedirs(prewvimgPath, exist_ok=True)
 
 ############ PREPARE ANCHORS #############
@@ -95,28 +95,28 @@ print('Creating set of tile anchors')
 tileAnchors = utils.genTileAnchors(shp_path=inf_shp_output_path, out_path=infAnchorsPath, buffer = 32)
 print(f'Saved tile anchors to {infAnchorsPath}')
 
-# ################## PROCESS DEM DATA ###########################
+# ################## PROCESS dem DATA ###########################
 
-# fetch DEM data from openTopo
-print('Requesting DEM data from OpenTopography')
-utils.fetch_DEM(geojson_path=inf_shp_output_path, save_path=DEM_download_path, api_key=openTopoAPIkey)
-print(f'Saved DEM data to: {DEM_download_path}')
+# fetch dem data from openTopo
+print('Requesting dem data from OpenTopography')
+utils.fetch_dem(geojson_path=inf_shp_output_path, save_path=dem_download_path, api_key=openTopoAPIkey)
+print(f'Saved dem data to: {dem_download_path}')
 
-# reproject DEM data
-print('Reprojecting DEM data. This will take a while...')
-utils.saveRasterToUTM(rasterPath=DEM_download_path, epsg=epsg, savePath=dem_UTM_path)
-print(f'Saved reprojected DEM data to: {dem_UTM_path}')
+# reproject dem data
+print('Reprojecting dem data. This will take a while...')
+utils.saveRasterToUTM(rasterPath=dem_download_path, epsg=epsg, savePath=dem_UTM_path)
+print(f'Saved reprojected dem data to: {dem_UTM_path}')
 
-# tile out DEM data
-print('Tiling DEM data')
-utils.tileRaster(pathToRaster=dem_UTM_path, outputPath=DEM_prenorm_tiles_path, dataType='DEM', anchors_csv=infAnchorsPath)
-print(f'Saved DEM tiles to: {DEM_prenorm_tiles_path}')
+# tile out dem data
+print('Tiling dem data')
+utils.tileRaster(pathToRaster=dem_UTM_path, outputPath=dem_prenorm_tiles_path, dataType='dem', anchors_csv=infAnchorsPath)
+print(f'Saved dem tiles to: {dem_prenorm_tiles_path}')
 
-# normalize DEM tiles
-print(f'Normalizing DEM data from {DEM_prenorm_tiles_path}')
-utils.normDEMs(src_path=DEM_prenorm_tiles_path, dst_path=DEM_tiles_path)
-shutil.rmtree(DEM_prenorm_tiles_path)
-print(f'Saved normalized DEM tiles to {DEM_tiles_path}')
+# normalize dem tiles
+print(f'Normalizing dem data from {dem_prenorm_tiles_path}')
+utils.normdems(src_path=dem_prenorm_tiles_path, dst_path=dem_tiles_path)
+shutil.rmtree(dem_prenorm_tiles_path)
+print(f'Saved normalized dem tiles to {dem_tiles_path}')
 
 
 ################### PROCESS WVIMG DATA #####################
