@@ -169,7 +169,7 @@ run_inference(
         model_loc=pathToWeights,
         epsg_code=epsg
     )
-print(f'Ran inference, tiles saved to {os.path.join(inf_data_path, 'chm_preds')}')
+print(f'Ran inference, tiles saved to {os.path.join(inf_data_path, "chm_preds")}')
 
 ############### MERGE CHM TILES ######################
 
@@ -194,4 +194,4 @@ print(f'Cropped CHM tif, saved to {croppedOutputRasterPath}')
 #     utils.genTreelist(tifPath=croppedOutputRasterPath, projectPath=project_path, rdsPath=rdsPath, epsg=epsg)
 # else:
 #     utils.genTreelist(tifPath=croppedOutputRasterPath, projectPath=project_path, epsg=epsg)
-# print(f'Generated treelist, saved to {os.path.join(os.path.dirname(croppedOutputRasterPath), 'treelist.csv')}')
+# print(f'Generated treelist, saved to {os.path.join(os.path.dirname(croppedOutputRasterPath), "treelist.csv")}')
