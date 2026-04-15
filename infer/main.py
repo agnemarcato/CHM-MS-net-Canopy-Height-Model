@@ -114,7 +114,7 @@ print(f'Saved dem tiles to: {dem_prenorm_tiles_path}')
 
 # normalize dem tiles
 print(f'Normalizing dem data from {dem_prenorm_tiles_path}')
-utils.normdems(src_path=dem_prenorm_tiles_path, dst_path=dem_tiles_path)
+utils.normDEMs(src_path=dem_prenorm_tiles_path, dst_path=dem_tiles_path)
 shutil.rmtree(dem_prenorm_tiles_path)
 print(f'Saved normalized dem tiles to {dem_tiles_path}')
 
