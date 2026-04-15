@@ -142,7 +142,7 @@ print(f'Saved sensor and solar tiles to: {inf_data_path}')
 print('Tiling wvimg data for model partition')
 for tif in [f for f in os.listdir(prewvimgPath) if f.endswith('.tif')]:
     utils.tileRaster(pathToRaster=os.path.join(prewvimgPath, tif), outputPath=os.path.join(inf_data_path, 'wvimg'), dataType = 'wvimg', anchors_csv=infAnchorsPath)
-print(f'Saved wvimg tiles to: {os.path.join(inf_data_path, 'wvimg')}')
+print(f'Saved wvimg tiles to: {os.path.join(inf_data_path, "wvimg")}')
 
 # remove prewvimg folder
 shutil.rmtree(prewvimgPath)
@@ -169,7 +169,7 @@ run_inference(
         model_loc=pathToWeights,
         epsg_code=epsg
     )
-print(f'Ran inference, tiles saved to {os.path.join(inf_data_path, 'chm_preds')}')
+print(f'Ran inference, tiles saved to {os.path.join(inf_data_path, "chm_preds")}')
 
 ############### MERGE CHM TILES ######################
 
@@ -194,4 +194,4 @@ print(f'Cropped CHM tif, saved to {croppedOutputRasterPath}')
 #     utils.genTreelist(tifPath=croppedOutputRasterPath, projectPath=project_path, rdsPath=rdsPath, epsg=epsg)
 # else:
 #     utils.genTreelist(tifPath=croppedOutputRasterPath, projectPath=project_path, epsg=epsg)
-# print(f'Generated treelist, saved to {os.path.join(os.path.dirname(croppedOutputRasterPath), 'treelist.csv')}')
+# print(f'Generated treelist, saved to {os.path.join(os.path.dirname(croppedOutputRasterPath), "treelist.csv")}')
