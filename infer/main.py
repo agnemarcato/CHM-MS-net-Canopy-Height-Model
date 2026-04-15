@@ -99,7 +99,7 @@ print(f'Saved tile anchors to {infAnchorsPath}')
 
 # fetch dem data from openTopo
 print('Requesting dem data from OpenTopography')
-utils.fetch_dem(geojson_path=inf_shp_output_path, save_path=dem_download_path, api_key=openTopoAPIkey)
+utils.fetch_DEM(geojson_path=inf_shp_output_path, save_path=dem_download_path, api_key=openTopoAPIkey)
 print(f'Saved dem data to: {dem_download_path}')
 
 # reproject dem data
