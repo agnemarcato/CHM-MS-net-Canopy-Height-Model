@@ -142,7 +142,7 @@ print(f'Saved sensor and solar tiles to: {inf_data_path}')
 print('Tiling wvimg data for model partition')
 for tif in [f for f in os.listdir(prewvimgPath) if f.endswith('.tif')]:
     utils.tileRaster(pathToRaster=os.path.join(prewvimgPath, tif), outputPath=os.path.join(inf_data_path, 'wvimg'), dataType = 'wvimg', anchors_csv=infAnchorsPath)
-print(f'Saved wvimg tiles to: {os.path.join(inf_data_path, 'wvimg')}')
+print(f'Saved wvimg tiles to: {os.path.join(inf_data_path, "wvimg")}')
 
 # remove prewvimg folder
 shutil.rmtree(prewvimgPath)
