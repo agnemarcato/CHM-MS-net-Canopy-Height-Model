@@ -52,7 +52,7 @@ pathToWvimg = os.path.join(project_path, 'downloads', site, 'wvimgInf')
 prewvimgPath = os.path.join(inf_data_path, 'prewvimg')
 metadataPath = os.path.join(project_path, 'downloads', site, 'metadata', 'DGTilesMetadata.json')
 outputRasterPath = os.path.join(inf_data_path, 'INF_chm_pred_merged.tif')
-croppedOutputRasterPath = os.path.join(inf_data_path, 'cropped_INF_chm_pred.tif')
+croppedOutputRasterPath = os.path.join(inf_data_path, f'{site}_merged_CHM_inf.tif')
 
 # code that selects the latest weights set
     # example file path: project_path/SatCHM/ms_net/lightning_logs/version_0/epoch-epoch=999.ckpt
