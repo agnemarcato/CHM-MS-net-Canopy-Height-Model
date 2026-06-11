@@ -8,7 +8,7 @@ import time
 import shutil
 import geopandas as gpd
 from dotenv import load_dotenv
-import SatCHM.prepTrainInputs.utils as utils
+import utils
 
 
 def main():
