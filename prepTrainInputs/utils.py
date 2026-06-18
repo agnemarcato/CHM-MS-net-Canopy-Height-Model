@@ -63,6 +63,9 @@ from shapely.geometry import mapping
 from shapely.geometry.base import BaseGeometry
 #TODO: remove unnecessary imports
 
+# OPTIONAL: use a fixed random seed
+random.seed(42)
+
 def saveRasterToUTM(rasterPath, epsg, savePath):
     """
     Reproject a raster file to the specified UTM EPSG code, always resampling to 0.5m resolution
