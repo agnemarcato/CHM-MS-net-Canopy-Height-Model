@@ -63,8 +63,6 @@ from shapely.geometry import mapping
 from shapely.geometry.base import BaseGeometry
 #TODO: remove unnecessary imports
 
-# OPTIONAL: use a fixed random seed
-random.seed(42)
 
 def saveRasterToUTM(rasterPath, epsg, savePath):
     """
@@ -1491,9 +1489,14 @@ def renameTiles(ms_data_path):
     #         if os.path.isfile(full_path) and fname.count('_') != 2:
     #             os.remove(full_path)
 
-def makeLists(base_dir: str, site):
+def makeLists(base_dir: str, site, random_seed=42):
+    """
+    Args:
+        base_dir: Base directory containing subdirectories
+        site: Site name for output files
+        random_seed: Seed for random number generator (default=42)
+    """
     # Define the subdirectories
-    # subdirs = ['dem', 'wvimg', 'lidar']
     subdirs = ['dem', 'chm', 'wvimg']
     
     # Get the set of files for each subdirectory
@@ -1508,9 +1511,12 @@ def makeLists(base_dir: str, site):
     # Find the intersection of all file sets
     common_files = set.intersection(*file_sets)
     
-    # Convert to list and shuffle
-    common_files_list = list(common_files)
+    # IMPORTANT: Sort first to ensure consistent order, THEN shuffle
+    common_files_list = sorted(list(common_files))
     print(f'size of set intersection: {len(common_files_list)}')
+    
+    # Set random seed and shuffle
+    random.seed(random_seed)
     random.shuffle(common_files_list)
     
     # Calculate split sizes
