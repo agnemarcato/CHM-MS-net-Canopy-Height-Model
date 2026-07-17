@@ -33,7 +33,7 @@ utils.checkCRS(wvimgMergedPath, epsg)
 print('Saving wvimg metadata')
 metadataPath = os.path.join(project_path, 'downloads', site, 'metadata', 'DGTilesMetadata.json')
 os.makedirs(os.path.dirname(metadataPath), exist_ok=True)
-utils.saveWvimgMetadata(wvimgPath=pathToWvimg, savePath=metadataPath, wvimgMergedPath=wvimgMergedPath)
+utils.saveWvimgMetadata(wvimgPath=pathToWvimg, savePath=metadataPath, prewvimgPath=wvimgMergedPath)
 print(f'Saved metadata to: {metadataPath}')
 
 # generate sensor and solar tiles
