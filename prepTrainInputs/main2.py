@@ -6,7 +6,7 @@ This program was produced under U.S. Government contract 89233218CNA000001 for L
 import os
 from dotenv import load_dotenv
 import shutil
-import SatCHM.prepTrainInputs.utils as utils
+import utils
 import time
 
 load_dotenv()
