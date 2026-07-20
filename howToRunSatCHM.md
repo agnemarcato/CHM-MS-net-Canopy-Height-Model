@@ -148,7 +148,7 @@ You must download **cloud-free, snow-free Vantor imagery** with:
 - Off-nadir angle **< 20°**
 - Coverage spanning training and inference areas
 
-For now, contact **zcrennen@lanl.gov** for assistance.
+For now, contact **rcrumley@lanl.gov** for assistance.
 
 #### Imagery Alignment
 
