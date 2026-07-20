@@ -2117,7 +2117,7 @@ def merge_chm_tiles(
     input_folder: str,
     output_tif: str,
     b: float = 16.0,      # meters: feather fully "on" by b meters from an edge
-    c: float = 4.0,       # meters: fully "off" within c meters of an edge
+    c: float = None,       # meters: fully "off" within c meters of an edge
     nodata: float = -9999 # output nodata
 ):
     """
@@ -2129,6 +2129,10 @@ def merge_chm_tiles(
 
     Assumes all inputs share CRS and pixel size (square pixels).
     """
+
+    if c is None:
+        c = b / 4.0
+
     tif_paths = sorted(glob(os.path.join(input_folder, "*.tif")))
     if not tif_paths:
         raise ValueError(f"No GeoTIFFs found in {input_folder}")
@@ -2234,7 +2238,7 @@ def merge_tiles_with_avg_height_feathered(
     output_tif: str,
     threshold: float = 2.0,  # keep only pixels > threshold when computing each tile's average
     b: float = 16.0,         # meters: weight ramps up to 1 by this distance from edges
-    c: float = 4.0,          # meters: completely discard within this distance of edges
+    c: float = None,          # meters: completely discard within this distance of edges
     nodata: float = -9999.0, # output NoData
     exclude_edges_in_average: bool = True  # ignore the outer c m when computing per-tile averages
 ):
@@ -2246,6 +2250,9 @@ def merge_tiles_with_avg_height_feathered(
     If `exclude_edges_in_average` is True, pixels within `c` meters of any tile edge
     are NOT used when computing each tile's average (to avoid edge artifacts).
     """
+
+    if c is None:
+        c = b / 4.0
 
     tif_paths = sorted(glob(os.path.join(input_folder, "*.tif")))
     if not tif_paths:

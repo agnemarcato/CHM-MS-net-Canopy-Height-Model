@@ -36,6 +36,7 @@ maxarAPIkey = os.getenv('maxarAPIkey')
 customLidarTifPath = os.getenv('customLidarTifPath')
 # TODO: Change this to be extracted directly from lidar data
 NORM_CONST = 46
+FEATHER_CONST = 40
 
 ############### PATH DEFINITIONS ###############
 inf_data_path = os.path.join(project_path, f'{site}_INF_data')
@@ -77,6 +78,7 @@ try:
         raise FileNotFoundError(f"No weights files found in {ckpt_dir}")
     pathToWeights = max(matches, key=lambda t: t[0])[1]
     print(f"Automatically selected weights: {pathToWeights}")
+    
 except Exception as e:
     print(f"⚠️  Failed to automatically select weights: {e}")
     print("Using fallback weights path...")
@@ -183,8 +185,7 @@ print('Merging chm tiles')
 utils.merge_chm_tiles(
     input_folder=os.path.join(inf_data_path, 'chm_preds'),
     output_tif=outputRasterPath,
-    b=40.0,
-    c=8.0
+    b=FEATHER_CONST,
 )
 print(f'Merged chm tiles, saved merged raster to {outputRasterPath}')
 
